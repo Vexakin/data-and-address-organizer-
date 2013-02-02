@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+@seen = {}
 
 # Determine where to look for contracts
 path = Dir["Contracts/*.txt"]
@@ -18,7 +19,7 @@ path.each do |file|
   File.readlines(file).each do |line|
 
     # if a given line contains "Party Date"
-    if line[/Party Date/]
+    if line[/Party Date/i]
       # Once we've found a line, split the line into a 2 part array
       # after ": " and grab everything in the array at index 1
       @party_date = line.split(": ")[1]
@@ -46,7 +47,7 @@ path.each do |file|
     end
 
   # if a given line contains "Contact Phone"
-    if line[/Contact Phone/]
+    if line[/Contact/ || /Phone/i]
       # Once we've found a line, split the line into a 2 part array
       # after ": " and grab everything in the array at index 1
       @contact_phone = line.split(": ")[1]
@@ -55,10 +56,24 @@ path.each do |file|
 
   # Combine the instance variables from the file into a single string
   party_info = "#{@client} | #{@party_date} | #{@entertainment_time} | #{@location} | #{@contact_phone}"
+    
+    # Remove any line breaks that happen to show up and shouldn't be there
+    party_info.gsub!(/(\S)[^\S\n]*\n[^\S\n]*(\S)/, '\1 \2')
 
-  # Remove any line breaks that happen to show up and shouldn't be there
-  party_info.gsub!(/(\S)[^\S\n]*\n[^\S\n]*(\S)/, '\1 \2')
+   
+  # Checks to see if party info has been seen before
+    # if true removes string
+    # if false adds to seen data
+    if !@seen[party_info]
+        @seen[party_info] = true
+        else
+        party_info = ""
+    end
+    
+    # makes sure there is data in pary_info before writing to file
+  if party_info != ""  
+      # Write cleaned string to the final output file and add a single line break afterwards
+      File.open(filename, "a"){ |results_file| results_file.puts "#{party_info}\n"}
+    end
 
-  # Write cleaned string to the final output file and add a single line break afterwards
-  File.open(filename, "a"){ |results_file| results_file.puts "#{party_info}\n"}
-end
+  end
