@@ -1,6 +1,3 @@
-test Client | Sunday January 15th, 2012 |  3;30-4:30 | 123 Really Real street , Realtown | 555 555 5555
-
-test Client | Sunday January 15th, 2012 |  3;30-4:30 | 123 Really Real street , Realtown | 555 555 5555
-
-test Client | Sunday January 15th, 2012 |  3;30-4:30 | 123 Really Real street , Realtown | 555 555 5555
-
+test Client | Sunday January 15th, 2012 |  3;30-4:30 | 123 Really Real street , Realtown 08550 | 555 555 5555 |  
+test Client | Sunday January 15th, 2012 |  3;30-4:30 | 123 Really Real street , Realtown 08550 | 555 555 5555 |  
+test Client | Sunday January 15th, 2012 |  3;30-4:30 | 123 Really Real street , Realtown 08550 | 555 555 5555 |  

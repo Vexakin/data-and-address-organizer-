@@ -5,5 +5,5 @@ Today's Date: 1/4/2012
 Client: test Client
 Party Date: Sunday January 15th, 2012
 Entertainment Time:  3;30-4:30
-Location: 123 Really Real street , Realtown
-Contact Phone:
+Location: 123 Really Real street , Realtown 08550
+Contact Phone: 555 555 5555
